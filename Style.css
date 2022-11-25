@@ -1,0 +1,459 @@
+            
+*, *::before, *::after
+{
+  box-sizing: border-box;
+}
+
+body 
+{
+  margin: 0;
+  background: white;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+}
+
+header 
+{
+  background: #FFC000;
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+.logo:hover
+{
+  text-decoration: overline ;
+}
+
+.Header
+{
+  height: 80px;
+}
+
+.nav-toggle 
+{
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label
+{
+  outline: 3px solid rgba(lightblue, .75);
+}
+
+.nav-toggle-label
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after 
+{
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after 
+{
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before
+{
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after 
+{
+  top: 7px;
+}
+
+nav 
+{
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: #FFC000;
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul 
+{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li 
+{
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a 
+{
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover 
+{
+  color: #000;
+}
+
+.nav-toggle:checked ~ nav 
+{
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a 
+{
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) 
+{
+  .nav-toggle-label 
+  {
+    display: none;
+  }
+
+  header 
+  {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  
+  .logo 
+  {
+    grid-column: 2 / 3;
+  }
+  
+  nav 
+  {
+    all: unset;
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1,1);
+    background: none;
+    top: initial;
+    left: initial;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  nav ul 
+  {
+    display: flex;
+  }
+  
+  nav li 
+  {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  
+  nav a 
+  {
+    opacity: 1;
+    position: relative;
+  }
+  
+  nav a::before 
+  {
+    content: '';
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+  
+  nav a:hover::before 
+  {
+    transform: scale(1,1);
+  }
+}
+
+.Container1
+{
+  display: grid;
+  height: vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.8fr 5fr;
+  grid-template-areas: "Sidebar Title Title Title" "Sidebar Content1 Content2 Content3";
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 50px;
+  grid-gap: 20px;
+}
+
+.Sidebar
+{
+  background: yellowgreen;
+  grid-area: Sidebar;
+  border-radius: 15px;
+}
+
+.Title
+{
+  background: palegreen;
+  grid-area: Title;
+  border-radius: 15px;
+}
+
+.Content1
+{
+  background: greenyellow;
+  grid-area: Content1;
+  border-radius: 15px;
+}
+
+.Content2
+{
+  background: lightgoldenrodyellow;
+  grid-area: Content2;
+  border-radius: 15px;
+}
+
+.Content3
+{
+  background: yellow;
+  grid-area: Content3;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 1000px)
+{
+  .Container1
+  {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.6fr 0.2fr 0.6fr 0.6fr;
+    grid-template-areas: "Sidebar" "Title" "Content1" "Content2" "Content3";
+    grid-gap: 10px;
+  }
+}
+
+.Buttons
+{
+  margin-top: 35px;
+  text-align: center;
+}
+
+.Buttons Button
+{
+  width: 200px;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+@media screen and (max-width: 1500px)
+{
+  .Buttons Button
+  {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+Button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+Button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+Button:hover span {
+  padding-right: 25px;
+}
+
+Button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.BasicInfo
+{
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+h2, h3
+{
+  font-size: 10px;
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+p
+{
+  margin-top: 0px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+h4
+{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.ImgBG
+{
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.Image
+{
+  height: 100px;
+}
+
+h5
+{
+  text-align: center;
+  font-size: 15px;
+  font-weight: normal;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+h6
+{
+  margin: 0;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  margin-bottom: 30px;
+}
+
+.Content3 h6
+{
+  font-size: 25px;
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 1200px)
+{
+  h5, h6
+  {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.Container2
+{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.Description
+{
+  border-radius: 15px;
+  margin-left: 80px;
+  margin-right: 80px;
+  text-indent: 50px;
+  font-size: 20px;
+  font-weight: lighter;
+  background: greenyellow;
+}
+
+.About
+{
+  background: greenyellow;
+  border-radius: 15px;
+  margin-left: 80px;
+  margin-right: 80px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.Description p
+{
+  margin-left: 120px;
+  margin-right: 120px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.About p
+{
+  margin-left: 120px;
+  margin-right: 120px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 50px;
+}
+
+@media screen and (max-width: 1000px)
+{
+  .About p
+  {
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 1000px)
+{
+  .Description p
+  {
+    font-size: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+
+
+
+
+
